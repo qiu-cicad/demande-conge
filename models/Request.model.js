@@ -33,6 +33,18 @@ const requestSchema = new Schema(
       type: String, 
       required: [true, "Requestor is required"] 
     },
+    validators:{
+      type:String,
+      required: [true, "put all vallidators' email here, separate with ; "]
+    },
+    hr:{
+      type:String ,
+      default:"vbavoux@cicad.fr"
+    },
+    sub:{
+      type:String,
+      required:false,
+    },
     comments: {
       type: String,
     },

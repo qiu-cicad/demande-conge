@@ -9,4 +9,10 @@ a {
 
 h1 {
   color: 15px;
+  text-align: center;
+}
+
+.container{
+  max-width: 750px;
+  padding: 50px;
 }

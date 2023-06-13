@@ -1,2 +1,70 @@
 <h1>{{appTitle}} 🚀</h1>
-<p>Welcome Ironhacker!</p>
+<div class="container">
+  <form id="requestForm" action="/send-request" method="post" enctype="multipart/form-data">
+    <div class="mb-3">
+      <label for="title" class="form-label">Titre</label>
+      <input type="text" class="form-control" id="title" name="title" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="type" class="form-label">Type</label>
+      <select class="form-select" id="type" name="type" required>
+        <option value="">Select a type</option>
+        <option value="Congés payés">Congés payés</option>
+        <option value="RTT">RTT</option>
+        <option value="Congés Mariage">Congés Mariage</option>
+        <option value="Congés Décès">Congés Décès</option>
+        <option value="Congés Naissance">Congés Naissance</option>
+        <option value="Congés de proche aidant">Congés de proche aidant</option>
+        <option value="Congés sans solde">Congés sans solde</option>
+        <option value="Congés Paternité">Congés Paternité</option>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label for="startDate" class="form-label">Start Date</label>
+      <input type="date" class="form-control" id="startDate" name="startDate" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="startFromMorning" class="form-check-label">Start From Morning</label>
+      <input type="checkbox" class="form-check-input" id="startFromMorning" name="startFromMorning" checked>
+    </div>
+
+    <div class="mb-3">
+      <label for="endDate" class="form-label">End Date</label>
+      <input type="date" class="form-control" id="endDate" name="endDate" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="endInTheAfternoon" class="form-check-label">End in the Afternoon</label>
+      <input type="checkbox" class="form-check-input" id="endInTheAfternoon" name="endInTheAfternoon" checked>
+    </div>
+
+    <div class="mb-3">
+      <label for="requester" class="form-label">Demandeur</label>
+      <input type="text" class="form-control" id="requester" name="requester" placeholder="Prénom Nom" required>
+    </div>
+    <div class="mb-3">
+      <label for="sub" class="form-label">Remplaçant</label>
+      <input type="text" class="form-control" id="sub" name="sub" placeholder="Prénom Nom">
+    </div>
+
+    <div class="mb-3">
+      <label for="validators" class="form-label">Validateurs</label>
+      <input type="text" class="form-control" id="validators" name="validators" placeholder="Prénom1 Nom1; Prénom2 Nom2">
+    </div>
+
+    <div class="mb-3">
+      <label for="comments" class="form-label">Commentaires</label>
+      <textarea class="form-control" id="comments" name="comments"></textarea>
+    </div>
+
+    <button type="submit" id="submitButton" class="btn btn-success">Envoyer la demande</button>
+  </form>
+  {{#if errorMessage}}
+  <section id="errorMessage">
+    <p>{{errorMessage}}</p>
+  </section>
+  {{/if}}
+</div>
