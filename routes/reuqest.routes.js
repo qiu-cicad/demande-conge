@@ -1,8 +1,14 @@
 const express = require("express");
 const router = express.Router();
 const Request = require("../models/Request.model");
+const bodyParser = require("body-parser");
+
+// Parse the request body
+router.use(bodyParser.urlencoded({ extended: true }));
+
 
 router.post("/send-request", (req, res, next) => {
+  console.log("clicked")
   const {
     title,
     type,
@@ -23,8 +29,8 @@ router.post("/send-request", (req, res, next) => {
   validators.split(";").map((validator) => {
     validatorsEmail += fullNameToEmail(validator) & ";";
   });
-  console.log("all emails:", subEmail, requesterEmail, validatorsEmail);
-  res.render("/", { errorMessage: "error" }); */
+  console.log("all emails:", subEmail, requesterEmail, validatorsEmail);*/
+  res.redirect("/"); 
 });
 
 function fullNameToEmail(fullName) {
