@@ -28,10 +28,9 @@ router.post("/send-request", (req, res, next) => {
   }
 
 
-  let subEmail = "";
+  let subEmail = sub ? fullNameToEmail(sub) : "" ;
   let requesterEmail = fullNameToEmail(requester);
   let validatorsEmail = "";
-  if (sub !== undefined) subEmail = fullNameToEmail(sub);
   validators.split(";").map((validator) => {
     validatorsEmail += `${fullNameToEmail(validator)};`;
   });
