@@ -1,15 +1,15 @@
 const express = require("express");
+const bodyParser = require("body-parser");
+const { application } = require('express');
 const router = express.Router();
 const Request = require("../models/Request.model");
-const bodyParser = require("body-parser");
-
-// Parse the request body
-router.use(bodyParser.urlencoded({ extended: true }));
-
 
 router.post("/send-request", (req, res, next) => {
-  console.log("clicked")
-  const {
+  console.log("route executed, here is the req.body:",req.body())
+
+
+
+ /*  const {
     title,
     type,
     startDate,
@@ -20,8 +20,7 @@ router.post("/send-request", (req, res, next) => {
     sub,
     validators,
     comments,
-  } = req.body;
-  console.log(req.body)
+  } = req.body; */
 /*   let subEmail = "";
   let requesterEmail = fullNameToEmail(requester);
   let validatorsEmail = "";
@@ -30,7 +29,7 @@ router.post("/send-request", (req, res, next) => {
     validatorsEmail += fullNameToEmail(validator) & ";";
   });
   console.log("all emails:", subEmail, requesterEmail, validatorsEmail);*/
-  res.redirect("/"); 
+  //res.redirect("/"); 
 });
 
 function fullNameToEmail(fullName) {
