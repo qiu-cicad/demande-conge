@@ -9,6 +9,11 @@ require("./db");
 // https://www.npmjs.com/package/express
 const express = require("express");
 
+// 1. require the body-parser
+const bodyParser = require('body-parser');
+// 2. let know your app you will be using it
+
+
 // Handles the handlebars
 // https://www.npmjs.com/package/hbs
 const hbs = require("hbs");
@@ -28,6 +33,8 @@ app.locals.appTitle = "DEMANDE D'ABSENCE";
 const indexRoutes = require("./routes/index.routes");
 app.use("/", indexRoutes);
 app.use("/", require('./routes/reuqest.routes'))
+
+app.use(bodyParser.urlencoded({ extended: true }));
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
 require("./error-handling")(app);
 

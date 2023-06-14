@@ -1,15 +1,8 @@
-const express = require("express");
-const bodyParser = require("body-parser");
-const { application } = require('express');
-const router = express.Router();
+const router = require("express").Router();
 const Request = require("../models/Request.model");
 
 router.post("/send-request", (req, res, next) => {
-  console.log("route executed, here is the req.body:",req.body())
-
-
-
- /*  const {
+  const {
     title,
     type,
     startDate,
@@ -20,16 +13,29 @@ router.post("/send-request", (req, res, next) => {
     sub,
     validators,
     comments,
-  } = req.body; */
-/*   let subEmail = "";
+  } = req.body;
+
+  // verify full names are all legal: 
+
+  const fullNameRegex = /^([A-Za-z]+\s[A-Za-z]+)(;\s[A-Za-z]+\s[A-Za-z]+)*$/;
+
+  if(fullNameRegex.test(requester) && fullNameRegex.test(sub) === false){
+    res.render("index",{errorMessage:'Le demandeur et le remplaçant doivent être des noms complets'} )
+  }
+
+  if(!fullNameRegex.test(validators)){
+    res.render("index",{errorMessage:'Les validateurs doivent être des noms complets séparés par ";"'} )
+  }
+
+
+  let subEmail = "";
   let requesterEmail = fullNameToEmail(requester);
   let validatorsEmail = "";
   if (sub !== undefined) subEmail = fullNameToEmail(sub);
   validators.split(";").map((validator) => {
-    validatorsEmail += fullNameToEmail(validator) & ";";
+    validatorsEmail += `${fullNameToEmail(validator)};`;
   });
-  console.log("all emails:", subEmail, requesterEmail, validatorsEmail);*/
-  //res.redirect("/"); 
+  console.log("all emails:", subEmail, requesterEmail, validatorsEmail);
 });
 
 function fullNameToEmail(fullName) {

@@ -1,6 +1,6 @@
 <h1>{{appTitle}} 🚀</h1>
 <div class="container">
-  <form id="requestForm" action="/send-request" method="post">
+  <form action="/send-request" method="POST">
     <div class="mb-3">
       <label for="title" class="form-label">Titre</label>
       <input type="text" class="form-control" id="title" name="title" required>
@@ -52,7 +52,8 @@
 
     <div class="mb-3">
       <label for="validators" class="form-label">Validateurs</label>
-      <input type="text" class="form-control" id="validators" name="validators" placeholder="Prénom1 Nom1; Prénom2 Nom2">
+      <input type="text" class="form-control" id="validators" name="validators"
+        placeholder="Prénom1 Nom1; Prénom2 Nom2">
     </div>
 
     <div class="mb-3">
@@ -62,6 +63,8 @@
 
     <button type="submit" id="submitButton" class="btn btn-success">Envoyer la demande</button>
   </form>
+  <br>
+  <br>
   {{#if errorMessage}}
   <section id="errorMessage">
     <p>{{errorMessage}}</p>
