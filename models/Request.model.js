@@ -17,7 +17,7 @@ const requestSchema = new Schema(
       type: Date,
       required: [true, "Start date is required."],
     },
-    startFromMorning: {
+    startWholeDay: {
       type: Boolean,
       required: [true, "Choice is required."],
     },
@@ -25,7 +25,7 @@ const requestSchema = new Schema(
       type: Date,
       required: [true, "End date is required"],
     },
-    endInTheAfternoon: {
+    endWholeDay: {
       type: Boolean,
       required: [true, "Choice is required."],
     },

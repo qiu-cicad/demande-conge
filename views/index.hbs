@@ -1,10 +1,11 @@
-<h1>{{appTitle}} 🚀</h1>
+<h1>{{appTitle}}</h1>
 <div class="container">
   <form action="/send-request" method="POST">
 
     <div class="mb-3">
       <label for="title" class="form-label">Titre</label>
-      <input type="text" class="form-control" id="title" name="title" required>
+      <input type="text" class="form-control" id="title" name="title" placeholder="donner un titre sucinnct et clair"
+        required>
     </div>
 
     <div class="mb-3">
@@ -23,23 +24,35 @@
     </div>
 
     <div class="mb-3">
-      <label for="startDate" class="form-label">Start Date</label>
+      <label for="startDate" class="form-label">Début</label>
       <input type="date" class="form-control" id="startDate" name="startDate" required>
+      <div class="mb-3 d-flex flex-row justify-content-around">
+        <div class="form-check">
+          <label class="form-check-label" for="startInTheMorning">Matin</label>
+          <input type="radio" class="form-check-input" id="startInTheMorning" name="startInTheMorning" value="yes"
+            checked>
+        </div>
+        <div class="form-check">
+          <label class="form-check-label" for="startInTheAfternoon">Après-midi</label>
+          <input type="radio" class="form-check-input" id="startInTheAfternoon" name="startInTheAfternoon" value="yes">
+        </div>
+      </div>
     </div>
 
     <div class="mb-3">
-      <label for="startFromMorning" class="form-check-label">Start From Morning</label>
-      <input type="checkbox" class="form-check-input" id="startFromMorning" name="startFromMorning" checked>
-    </div>
-
-    <div class="mb-3">
-      <label for="endDate" class="form-label">End Date</label>
+      <label for="endDate" class="form-label">Fin</label>
       <input type="date" class="form-control" id="endDate" name="endDate" required>
-    </div>
-
-    <div class="mb-3">
-      <label for="endInTheAfternoon" class="form-check-label">End in the Afternoon</label>
-      <input type="checkbox" class="form-check-input" id="endInTheAfternoon" name="endInTheAfternoon" checked>
+      <div class="mb-3 d-flex flex-row justify-content-around">
+        <div class="form-check">
+          <label class="form-check-label" for="endInTheMorning">Matin</label>
+          <input type="radio" class="form-check-input" id="endInTheMorning" name="endInTheMorning" value="yes">
+        </div>
+        <div class="form-check">
+          <label class="form-check-label" for="endInTheAfternoon">Après-midi</label>
+          <input type="radio" class="form-check-input" id="endInTheAfternoon" name="endInTheAfternoon" value="yes"
+          checked>
+        </div>
+      </div>
     </div>
 
     <div class="mb-3">
@@ -72,3 +85,30 @@
   </section>
   {{/if}}
 </div>
+
+
+<script>
+
+  const endInTheMorning = document.getElementById('endInTheMorning');
+  const endInTheAfternoon = document.getElementById('endInTheAfternoon');
+
+  endInTheMorning.addEventListener('change', () => {
+    endInTheAfternoon.checked = false;
+  });
+
+  endInTheAfternoon.addEventListener('change', () => {
+    endInTheMorning.checked = false;
+  });
+
+  const startInTheMorning = document.getElementById('startInTheMorning');
+  const startInTheAfternoon = document.getElementById('startInTheAfternoon');
+
+  startInTheMorning.addEventListener('change', () => {
+    startInTheAfternoon.checked = false;
+  });
+
+  startInTheAfternoon.addEventListener('change', () => {
+    startInTheMorning.checked = false;
+  });
+
+</script>
