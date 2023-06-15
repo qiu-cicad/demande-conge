@@ -29,7 +29,7 @@ const requestSchema = new Schema(
       type: Boolean,
       required: [true, "Choice is required."],
     },
-    requester: { 
+    requestor: { 
       type: String, 
       required: [true, "Requestor is required"] 
     },
