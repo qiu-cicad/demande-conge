@@ -29,12 +29,13 @@ router.post("/delete-user/:id", (req, res, next) => {
 
 router.post("/create-user", (req, res, next) => {
   console.log("Started to create user");
-  const { fullName } = req.body;
+  let { fullName } = req.body;
+  fullName = fullName.trim()
   let firstName = "";
   let lastName = "";
   let email = "";
   
-  if (fullName.trim().split(" ").length !== 2) {
+  if (fullName.split(" ").length < 2) {
     User.find()
       .sort({ lastName: 1 })
       .then((users) => {
@@ -50,9 +51,9 @@ router.post("/create-user", (req, res, next) => {
       });
   } else {
     email = fullNameToEmail(fullName);
-    firstName = fullName.trim().split(" ")[0].toLowerCase();
+    firstName = fullName.split(" ")[0].toLowerCase();
     firstName = firstName.charAt(0).toUpperCase() + firstName.slice(1);
-    lastName = fullName.trim().split(" ")[1].toUpperCase();
+    lastName = fullName.split(" ").slice(1).join(" ").toUpperCase();
 
     User.findOne({ firstName, lastName })
       .then((user) => {
