@@ -4,8 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node server.js",
-    "dev": "nodemon server.js",
-    "build": "handlebars source/**/*.hbs -f public/js/templates.js"
+    "dev": "nodemon server.js"
   },
   "dependencies": {
     "@yaireo/tagify": "^4.17.8",
