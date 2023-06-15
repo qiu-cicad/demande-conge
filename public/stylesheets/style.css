@@ -21,3 +21,19 @@ h1 {
   color:red;
   font-size: large;
 }
+
+.userTag{
+  margin: 5px;
+  font-size:x-small;
+  align-items: center;
+}
+
+.userTag p{
+  margin: 0;
+  padding: 0;
+}
+.userTag button{
+  font-size: x-small;
+  margin: 0;
+  padding: 0 2px;
+}

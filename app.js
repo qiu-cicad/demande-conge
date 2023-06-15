@@ -33,6 +33,7 @@ app.locals.appTitle = "DEMANDE D'ABSENCE";
 const indexRoutes = require("./routes/index.routes");
 app.use("/", indexRoutes);
 app.use("/", require('./routes/reuqest.routes'))
+app.use("/", require('./routes/user.routes'))
 
 app.use(bodyParser.urlencoded({ extended: true }));
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
