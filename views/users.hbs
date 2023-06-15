@@ -1,27 +1,28 @@
 <title>New User</title>
-
-<h1>Tous les CICADiens:</h1>
-<div class="userContainer d-flex flex-row p-1 flex-wrap">
-    
-    {{#each users}}
-        <form action="/delete-user/{{_id}}" class="userTag btn btn-primary mb-3 d-flex flex-row align-items-center" method="post" >
-            <p>{{firstName}} {{lastName}}</p>
-            <button class="btn btn-primary" type="submit">X</button>
-        </form>
-    {{/each}}
-</div>
-
 <div>
-    <form action="/create-user" method="POST">
-     <div class="mb-3 d-flex flex-row justify-content-around">
-      <label for="fullName" class="form-label">Ajouter un nouveau CICADien.e</label>
-      <input type="text" class="form-control" id="fullName" name="fullName" placeholder="Prénom Nom" required>
-        <button type="submit" id="submitButton" class="btn btn-success">+</button>
+  <form action="/create-user" method="POST">
+    <div class="mb-3 d-flex flex-row" style="width: 500px; gap:10px;">
+      <label for="fullName" class="form-label">Ajouter un nouveau:</label>
+      <input autofocus="autofocus" type="text" class="form-control" id="fullName" name="fullName"
+        placeholder="Prénom Nom" required>
+      <button type="submit" id="submitButton" class="btn btn-success">+</button>
     </div>
-    
-    </form>
+  </form>
 
- <br>
+  <br>
+  <h1>Tous les CICADiens:</h1>
+  <div class="userContainer d-flex flex-row p-1 flex-wrap">
+
+    {{#each users}}
+    <form action="/delete-user/{{_id}}" class="userTag btn btn-primary mb-3 d-flex flex-row align-items-center"
+      method="post">
+      <p>{{firstName}} {{lastName}}</p>
+      <button class="btn btn-primary" type="submit">X</button>
+    </form>
+    {{/each}}
+  </div>
+
+
   <br>
   {{#if errorMessage}}
   <section id="errorMessage">

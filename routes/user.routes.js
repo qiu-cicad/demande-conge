@@ -4,8 +4,8 @@ const fullNameToEmail = require("../utils/fullNameToEmail");
 
 router.get("/users", (req, res, next) => {
   User.find()
+    .sort({ lastName: 1 })
     .then((users) => {
-      console.log(users);
       res.render("users", { users });
     })
     .catch((err) => console.log("problem in getting users from mongoDB", err));
@@ -16,7 +16,7 @@ router.post("/delete-user/:id", (req, res, next) => {
   User.findByIdAndDelete(userId)
     .then((user) => {
       console.log("This user is deleted from MongoDB:", user);
-      return User.find();
+      return User.find().sort({ lastName: 1 });
     })
     .then((users) => {
       res.render("users", { users });
@@ -27,7 +27,6 @@ router.post("/delete-user/:id", (req, res, next) => {
     });
 });
 
-
 router.post("/create-user", (req, res, next) => {
   console.log("Started to create user");
   const { fullName } = req.body;
@@ -36,6 +35,7 @@ router.post("/create-user", (req, res, next) => {
   let email = "";
   if (fullName.trim().split(" ").length !== 2) {
     User.find()
+    .sort({ lastName: 1 })
       .then((users) => {
         res.render("users", {
           users,
@@ -65,7 +65,7 @@ router.post("/create-user", (req, res, next) => {
       })
       .then((newUser) => {
         console.log("New user is added:", newUser);
-        return User.find();
+        return User.find().sort({ lastName: 1 });
       })
       .then((users) => {
         res.render("users", { users });
@@ -76,6 +76,5 @@ router.post("/create-user", (req, res, next) => {
       });
   }
 });
-
 
 module.exports = router;
