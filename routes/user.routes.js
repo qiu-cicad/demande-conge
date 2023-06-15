@@ -33,9 +33,10 @@ router.post("/create-user", (req, res, next) => {
   let firstName = "";
   let lastName = "";
   let email = "";
+  
   if (fullName.trim().split(" ").length !== 2) {
     User.find()
-    .sort({ lastName: 1 })
+      .sort({ lastName: 1 })
       .then((users) => {
         res.render("users", {
           users,
@@ -56,9 +57,7 @@ router.post("/create-user", (req, res, next) => {
     User.findOne({ firstName, lastName })
       .then((user) => {
         if (user) {
-          res.render("users", {
-            errorMessage: "La personne existe déjà dans notre annuaire",
-          });
+          throw new Error("La personne existe déjà dans notre annuaire");
         } else {
           return User.create({ firstName, lastName, email });
         }
@@ -72,9 +71,12 @@ router.post("/create-user", (req, res, next) => {
       })
       .catch((err) => {
         console.log("Error creating user:", err);
-        res.status(500).send("Error creating user");
+        res.status(500).render("users", {
+          errorMessage: err.message,
+        });
       });
   }
 });
+
 
 module.exports = router;
