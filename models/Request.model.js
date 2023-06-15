@@ -53,9 +53,6 @@ const requestSchema = new Schema(
     // this second object adds extra properties: `createdAt` and `updatedAt`
     timestamps: true,
   },
-  {
-    collection: "CIC"
-  }
 );
 
 module.exports = model("Request", requestSchema);

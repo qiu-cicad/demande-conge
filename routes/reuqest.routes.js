@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const Request = require("../models/Request.model");
 const differenceInBusinessDays = require("date-fns/differenceInBusinessDays");
-
+const fullNameToEmail = require("../utils/fullNameToEmail")
 router.post("/send-request", (req, res, next) => {
   const {
     title,
@@ -72,10 +72,5 @@ router.post("/send-request", (req, res, next) => {
   console.log(newRequest)
 });
 
-function fullNameToEmail(fullName) {
-  let firstName = fullName.split(" ")[0];
-  let lastName = fullName.split(" ")[1];
-  return `${firstName.charAt(0)}${lastName}@cicad.fr`;
-}
 
 module.exports = router;
