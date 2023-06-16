@@ -9,6 +9,8 @@ function fullNameToEmail(fullName) {
     return "";
   }
 
+  if(trimmedFullName.indexOf("-") !==-1) trimmedFullName = trimmedFullName.split("-").join("")
+
   const names = trimmedFullName.split(" ");
   const firstName = names[0].toLowerCase();
   const lastName = names.slice(1).join("").toLowerCase();
